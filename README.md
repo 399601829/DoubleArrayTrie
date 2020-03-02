@@ -1,6 +1,27 @@
 # DoubleArrayTrie
 高效字典树-双数组字典树，适用于敏感词汇过滤、相关词查找、相关词匹配
 
+使用方式：
+```
+public static void main(String[] args) throws IOException {
+        // Step one: build words set
+        ArrayList<String> words = new ArrayList<String>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/resources/test.txt")));
+        String temp;
+        while((temp = reader.readLine())!=null){
+            words.add(temp);
+        }
+
+        // Step two: build dat
+        DATrie dat = new DATrie(DATrie.InitType.Empty);
+        for(String word : words)
+            dat.add(word);
+
+        // Step three: check word
+        System.out.println(dat.contains("敏感")+" "+dat.contains("敏感地带") +" "+dat.contains("晓峰"));
+    }
+```
+
 
 
 Trie树主要应用在信息检索领域，非常高效。
